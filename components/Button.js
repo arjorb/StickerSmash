@@ -45,6 +45,7 @@ const styles = StyleSheet.create({
     width: 320,
     height: 68,
     marginHorizontal: 20,
+    marginTop: 20,
     alignItems: "center",
     justifyContent: "center",
     padding: 3,
@@ -61,6 +62,7 @@ const styles = StyleSheet.create({
     paddingRight: 8,
   },
   buttonLabel: {
+    color: "#fff",
     fontSize: 16,
   },
 });
