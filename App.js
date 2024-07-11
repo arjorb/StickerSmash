@@ -11,6 +11,7 @@ const PlaceholderImage = require("./assets/images/background-image.png");
 export default function App() {
   const [selectImage, setSelectedImage] = useState(null);
   const [showAppOptions, setShowAppOptions] = useState(false);
+  const [isModalVisible, setIsModalVisible] = useState(false);
 
   const imagePickerHandler = async () => {
     try {
@@ -34,12 +35,16 @@ export default function App() {
   };
 
   const onAddSticker = () => {
-    // we will implement this later
+    setIsModalVisible(true);
   };
 
   const onSaveImageAsync = async () => {
     // we will implement this later
   };
+
+  const onCloseModal = () => {
+    setIsModalVisible(false);
+  }
 
   return (
     <View style={styles.container}>
