@@ -6,6 +6,8 @@ import * as imagePicker from "expo-image-picker";
 import { useState } from "react";
 import IconButton from "./components/IconButton";
 import CircleButton from "./components/CircleButton";
+import EmojiPicker from "./components/EmojiPicker";
+import EmojiList from "./components/EmojiList";
 const PlaceholderImage = require("./assets/images/background-image.png");
 
 export default function App() {
@@ -44,7 +46,7 @@ export default function App() {
 
   const onCloseModal = () => {
     setIsModalVisible(false);
-  }
+  };
 
   return (
     <View style={styles.container}>
@@ -79,6 +81,12 @@ export default function App() {
           />
         </View>
       )}
+      <EmojiPicker
+        isVisible={isModalVisible}
+        onClose={onCloseModal}
+      >
+        <EmojiList/>
+</EmojiPicker>
       <StatusBar style="auto" />
     </View>
   );
