@@ -3,6 +3,7 @@ import { StyleSheet, Text, View } from "react-native";
 import ImageViewer from "./components/ImageViewer";
 import Button from "./components/Button";
 import * as imagePicker from "expo-image-picker";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { useState } from "react";
 import IconButton from "./components/IconButton";
 import CircleButton from "./components/CircleButton";
@@ -49,9 +50,9 @@ export default function App() {
   const onCloseModal = () => {
     setIsModalVisible(false);
   };
-  
+
   return (
-    <View style={styles.container}>
+    <GestureHandlerRootView style={styles.container}>
       <View style={styles.imageContainer}>
         <ImageViewer
           PlaceholderImage={PlaceholderImage}
@@ -90,7 +91,7 @@ export default function App() {
         <EmojiList onSelect={setPickedEmoji} onCloseModal={onCloseModal} />
       </EmojiPicker>
       <StatusBar style="auto" />
-    </View>
+    </GestureHandlerRootView>
   );
 }
 
