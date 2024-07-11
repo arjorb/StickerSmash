@@ -1,5 +1,5 @@
 import { StatusBar } from "expo-status-bar";
-import { Image, StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View } from "react-native";
 import ImageViewer from "./components/ImageViewer";
 import Button from "./components/Button";
 import * as imagePicker from "expo-image-picker";
@@ -8,6 +8,7 @@ const PlaceholderImage = require("./assets/images/background-image.png");
 
 export default function App() {
   const [selectImage, setSelectedImage] = useState(null);
+  const [showAppOptions, setShowAppOptions] = useState(false);
 
   const imagePickerHandler = async () => {
     try {
@@ -19,7 +20,7 @@ export default function App() {
       if (!pickedImage.canceled) {
         const { uri } = pickedImage.assets[0];
         setSelectedImage(uri);
-        console.log(uri)
+        setShowAppOptions(true);
       }
     } catch (error) {
       console.log("Error selecting image:", error);
@@ -34,14 +35,22 @@ export default function App() {
           selectImage={selectImage}
         />
       </View>
-      <View style={styles.footerContainer}>
-        <Button
-          label="Choose a photo"
-          theme="primary"
-          imagePickerHandler={imagePickerHandler}
-        />
-        <Button label="Use this photo" />
-      </View>
+      {showAppOptions ? (
+        <View />
+      ) : (
+        <View style={styles.footerContainer}>
+          <Button
+            label="Choose a photo"
+            theme="primary"
+            imagePickerHandler={imagePickerHandler}
+          />
+          <Button
+            label="Use this photo"
+            onPress={() => setShowAppOptions(true)}
+          />
+        </View>
+      )}
+       <StatusBar style="auto" />
     </View>
   );
 }
